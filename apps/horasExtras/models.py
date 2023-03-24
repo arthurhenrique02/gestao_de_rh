@@ -1,5 +1,7 @@
 from django.db import models
 
+from apps.funcionarios.models import Funcionario
+
 
 # criar model de horaextra
 class ContabilizarHorasExtra(models.Model):
@@ -10,6 +12,14 @@ class ContabilizarHorasExtra(models.Model):
     # motivo das horas
     motivo = models.CharField(
         max_length=250, help_text="Motivo das horas extras")
+
+    # hora extra pertencente ao funcionário
+    # referenciar Funcionario
+    # ao deletar (on_delete) proteger o objeto (não excluí-lo de primeira)
+    funcionario = models.ForeignKey(
+        Funcionario,
+        on_delete=models.PROTECT,
+    )
 
     # retornar motivo
     def __str__(self):
