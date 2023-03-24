@@ -1,8 +1,7 @@
 from django.db import models
 
+
 # criar model do funcionário
-
-
 class Funcionario(models.Model):
     # nome
     nome = models.CharField(max_length=30, help_text="Nome do funcionario")
@@ -17,9 +16,11 @@ class Funcionario(models.Model):
     # empresa
     empresa = models.CharField(
         max_length=100, help_text="Empresa que o funcionario trabalha")
+
     # departamento
     departamento = models.CharField(
         max_length=100, help_text="Departamento que está alocado")
+
     # Quantidade de horas extras
     horas_extras = models.DecimalField(
         max_digits=5, decimal_places=2, help_text="Quantidade de horas extras")
