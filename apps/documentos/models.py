@@ -12,3 +12,7 @@ class Documento(models.Model):
         auto_now_add=True, help_text="Data e hora da postagem do documento")
     # data do documento
     data = models.DateField(help_text="Data de criação do documento")
+
+    # retornar nome
+    def __str__(self):
+        return self.nome
