@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+# definir view home
+# request como argumento para poder pegar a requisição do usuário
+def home(request):
+    return HttpResponse("Ola mundo!")
