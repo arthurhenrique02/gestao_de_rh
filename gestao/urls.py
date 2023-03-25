@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    # adicionar rota padrao padrao ("") para o app, definido para o app principal, que irá mostrar uma interface de inicio
+    path("", include("apps.coreApp.urls")),
     # adicionar urls dos funcionarios a rota
     path("funcionarios/", include("apps.funcionarios.urls")),
     path("admin/", admin.site.urls)
