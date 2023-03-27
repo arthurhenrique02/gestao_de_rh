@@ -6,4 +6,4 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return HttpResponse("Isso é a rota padrao")
+    return render(request, "index.html")
