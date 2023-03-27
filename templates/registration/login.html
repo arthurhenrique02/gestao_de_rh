@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+<!--template de login para a url account (propria do django)-->
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+    <!--criar formulario-->
+    <form method="post">
+        <!--adicionar token de segurança ao form-->
+        {% csrf_token %}
+        <!--rendezirar form atraves do django-->
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+{% endblock %}
