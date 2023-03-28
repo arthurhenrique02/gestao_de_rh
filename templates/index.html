@@ -13,16 +13,32 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="#">Empresas</a>
-            <a class="nav-link" href="/accounts/logout">Documentos</a>
-            <a class="nav-link" href="/admin">funcionários</a>
-            </div>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <!--verificar se o usuario está em uma empresa e retornar os dados ou um link para criar a empresa-->
+                        {% if user.funcionario.empresa %}
+                            Empresa
+                        {% else %}
+                            Criar empresa
+                        {% endif %}
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Funcionarios</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/admin">admin</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="accounts/logout">Log Out</a>
+                  </li>
+            </ul>
         </div>
         </div>
     </nav>
 {% endblock %}
 
 {% block main %}
-    <h1>AAAAAAAAAAAAAAA</h1>
+    <h1>{{ user.funcionario.nome }} {{ user.funcionario.sobrenome }}</h1>
 {% endblock %}
