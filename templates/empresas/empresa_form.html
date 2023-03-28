@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block main %}
-    <form actionm="/" method="post">
-        <!--adicionar csrf token-->
+    <form method="post">
+        <!--adicionar token-->
         {% csrf_token %}
         <!--rendezirar form atraves do django-->
         {{ form }}
