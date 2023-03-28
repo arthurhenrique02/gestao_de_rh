@@ -37,6 +37,8 @@ class Funcionario(models.Model):
     empresa = models.ForeignKey(
         Empresa,
         on_delete=models.CASCADE,
+        null=True,
+        blank=True,
     )
 
     # departamento
