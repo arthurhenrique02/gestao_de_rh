@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Registrar Empresa
+{% endblock %}
+
+{% block main %}
+    <form actionm="/" method="post">
+        <!--adicionar csrf token-->
+        {% csrf_token %}
+        <!--rendezirar form atraves do django-->
+        {{ form }}
+        <button type="submit">Registrar</button>
+    </form>
+{% endblock %}

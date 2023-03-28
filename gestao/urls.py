@@ -23,9 +23,10 @@ urlpatterns = [
     path("", include("apps.coreApp.urls")),
     # adicionar urls dos funcionarios a rota
     path("funcionarios/", include("apps.funcionarios.urls")),
-
-    path("admin/", admin.site.urls),
+    # adicionar rota da criação de empresas
+    path("empresa/", include("apps.empresas.urls")),
     # adicionar path para o login, o path é do proprio django e irá conter algumas outras funcionalidades como login e logout
     path('accounts/', include('django.contrib.auth.urls')),
 
+    path("admin/", admin.site.urls),
 ]

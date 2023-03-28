@@ -15,14 +15,12 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
                         <!--verificar se o usuario está em uma empresa e retornar os dados ou um link para criar a empresa-->
                         {% if user.funcionario.empresa %}
-                            Empresa
+                        <a class="nav-link" href="#">Empresa</a>
                         {% else %}
-                            Criar empresa
+                        <a class="nav-link" href="empresa/registrarEmpresa">Criar empresa</a>
                         {% endif %}
-                    </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Funcionarios</a>
