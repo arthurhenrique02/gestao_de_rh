@@ -17,9 +17,10 @@
                 <li class="nav-item">
                         <!--verificar se o usuario está em uma empresa e retornar os dados ou um link para criar a empresa-->
                         {% if user.funcionario.empresa %}
-                        <a class="nav-link" href="#">Empresa</a>
+                        <!--Passar url e id da empresa como parametro para a url-->
+                        <a class="nav-link" href="{% url 'Editar_empresa' user.funcionario.empresa.id %}">Empresa</a>
                         {% else %}
-                        <a class="nav-link" href="empresa/registrarEmpresa">Criar empresa</a>
+                        <a class="nav-link" href="{% url 'Registrar_empresa' %}">Criar empresa</a>
                         {% endif %}
                   </li>
                   <li class="nav-item">
@@ -29,7 +30,7 @@
                     <a class="nav-link" href="/admin">admin</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="accounts/logout">Log Out</a>
+                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
                   </li>
             </ul>
         </div>

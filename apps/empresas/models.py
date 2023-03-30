@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 # definir model da empresa
@@ -9,3 +10,8 @@ class Empresa(models.Model):
     # retornar nome da empresa
     def __str__(self):
         return self.nome
+
+    # definir get_absolute_url, metodo para 'reverter' para uma url após updates
+    def get_absolute_url(self):
+        # irá retornar para a home
+        return reverse("home")
