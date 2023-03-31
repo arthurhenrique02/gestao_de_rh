@@ -28,7 +28,7 @@ class CriarEmpresa(CreateView):
         funcionario.save()
 
         # retornar para a url raiz
-        return redirect("/")
+        return redirect("/", messages=messages)
 
 
 # Criar view para editar empresa
