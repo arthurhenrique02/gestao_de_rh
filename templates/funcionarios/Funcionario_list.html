@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Funcionarios
+{% endblock %}
+
+{% block main %}
+    <!--Verificar funcionarios existentes-->
+    {% for funcionario in object_list %}
+        <li>{{ funcionario.nome }}</li>
+    {% endfor %}
+{% endblock %}
