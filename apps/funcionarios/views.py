@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic.edit import CreateView, UpdateView
-from django.views.generic import ListView
+from django.views.generic import CreateView, UpdateView, ListView
 from .models import Funcionario
 
 
@@ -26,3 +25,14 @@ class ListaFuncionarios(ListView):
 
         # mudar query
         return Funcionario.objects.filter(empresa=empresa_logada)
+
+# view para atualizar o cadastro do funcionario
+
+
+class AtualizarFuncionario(UpdateView):
+    model = Funcionario
+
+    fields = [
+        "nome", "sobrenome", "idade", "sexo",
+        "departamentos_pertencentes",
+    ]

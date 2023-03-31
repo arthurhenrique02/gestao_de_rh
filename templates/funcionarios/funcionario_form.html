@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Editar Funcionario: {{ funcionario.nome }}
+{% endblock %}
+
+{% block main %}
+    <!--Editar funcionario-->
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form }}
+        <button type="submit">
+            Atualizar
+        </button>
+    </form>
+{% endblock %}

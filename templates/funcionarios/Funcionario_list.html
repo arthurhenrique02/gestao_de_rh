@@ -7,6 +7,6 @@
 {% block main %}
     <!--Verificar funcionarios existentes-->
     {% for funcionario in object_list %}
-        <li>{{ funcionario.nome }}</li>
+        <li><a href="{% url 'atualizarFuncionario' funcionario.id %}"</a>{{ funcionario.nome }}</li>
     {% endfor %}
 {% endblock %}

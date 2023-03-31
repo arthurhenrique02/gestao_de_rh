@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 from apps.departamentos.models import Departamento
 from apps.empresas.models import Empresa
@@ -46,6 +47,11 @@ class Funcionario(models.Model):
     # um funcionario poderá estar presente em mais de um departamento
     departamentos_pertencentes = models.ManyToManyField(Departamento)
 
+    # definir url absoluta de 'redirecionamento'
+    def get_absolute_url(self):
+        # mandar de volta para a lista de funcionarios
+        return reverse("list_funcionarios")
     # retornar o nome e sobrenome do funcionario
+
     def __str__(self):
         return f"{self.nome} {self.sobrenome}"
