@@ -1,22 +1,50 @@
+from random import randint
 from django.urls import reverse_lazy
 from django.http import HttpResponse
 from django.views.generic import CreateView, UpdateView, ListView, DeleteView
+from django.contrib.auth.models import User
+
 from .models import Funcionario
 
 
-# definir view home
-# request como argumento para poder pegar a requisição do usuário
-def home(request):
-    return HttpResponse("Ola mundo!")
-
-
-# definir classe para listar funcionarios
-class ListaFuncionarios(ListView):
+# view para cadastrar um novo funcionario
+class RegistrarFuncionario(CreateView):
     # definir model
     model = Funcionario
 
-    # definir paginação
-    paginate_by = 10
+    # campos
+    fields = ["nome", "sobrenome", "idade",
+              "sexo", "departamentos_pertencentes"]
+
+    # definir metodo form valid
+    def form_valid(self, form):
+        # pegar o objeto funcionario que está sendo criado
+        # commit false garante que não vá direto para o banco de dados
+        funcionario = form.save(commit=False)
+
+        # definir a empresa
+        funcionario.empresa = self.request.user.funcionario.empresa
+
+        # definir username
+        # pegar o nome e o primeiro sobrenome e um numero aleatorio
+        username = (
+            funcionario.nome +
+            funcionario.sobrenome.split(" ")[0] +
+            str(randint(0, 1000))
+        )
+        funcionario.user = User.objects.create(username=username)
+
+        # salvar no banco de dados
+        funcionario.save()
+
+        # retornar um supe para chamar o form valid
+        return super(RegistrarFuncionario, self).form_valid(form)
+
+
+# definir classe para listar (read) funcionarios
+class ListaFuncionarios(ListView):
+    # definir model
+    model = Funcionario
 
     # alterar queryset para apenas a empresa pertencente ao funcionario logado
     def get_queryset(self):

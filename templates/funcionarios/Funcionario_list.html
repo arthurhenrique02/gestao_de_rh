@@ -39,11 +39,18 @@
 {% endblock %}
 
 {% block main %}
+    <!--create-->
+    <form action="{% url 'registrarFuncionario' %}">
+        <input class="btn btn-info" type="submit" value="Registrar"/>
+    </form>
     <!--Verificar funcionarios existentes-->
     {% for funcionario in object_list %}
+
+        <!--update-->
         <li><a href="{% url 'atualizarFuncionario' funcionario.id %}">{{ funcionario.nome }}</a></li>
+        <!--delete-->
         <form action="{% url 'deletarFuncionario' funcionario.id %}">
-            <input type="submit" value="deletar"/>
+            <input class="btn btn-danger" type="submit" value="deletar"/>
         </form>
     {% endfor %}
 {% endblock %}
