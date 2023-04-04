@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import ListaFuncionarios, AtualizarFuncionario
+from .views import ListaFuncionarios, AtualizarFuncionario, DeletarFuncionario
 
 
 # incluir view home a url dos funcionarios
@@ -10,6 +10,11 @@ urlpatterns = [
         "atualizar_funcionario/<int:pk>",
         AtualizarFuncionario.as_view(),
         name="atualizarFuncionario"
+    ),
+    path(
+        "deletar_funcionario/<int:pk>",
+        DeletarFuncionario.as_view(),
+        name="deletarFuncionario"
     ),
 
 ]

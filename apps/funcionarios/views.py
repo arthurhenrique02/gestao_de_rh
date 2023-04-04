@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.http import HttpResponse
-from django.views.generic import CreateView, UpdateView, ListView
+from django.views.generic import CreateView, UpdateView, ListView, DeleteView
 from .models import Funcionario
 
 
@@ -26,9 +26,8 @@ class ListaFuncionarios(ListView):
         # mudar query
         return Funcionario.objects.filter(empresa=empresa_logada)
 
+
 # view para atualizar o cadastro do funcionario
-
-
 class AtualizarFuncionario(UpdateView):
     model = Funcionario
 
@@ -36,3 +35,12 @@ class AtualizarFuncionario(UpdateView):
         "nome", "sobrenome", "idade", "sexo",
         "departamentos_pertencentes",
     ]
+
+
+# view para deletar
+class DeletarFuncionario(DeleteView):
+    # definir model
+    model = Funcionario
+
+    # definir url de retorno (sucesso ao deletar)
+    success_url = reverse_lazy("list_funcionarios")

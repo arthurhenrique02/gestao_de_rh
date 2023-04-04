@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Editar Funcionario: {{ funcionario.nome }}
+    Deletar Funcionario: {{ funcionario.nome }}
 {% endblock %}
 
 {% block main %}
@@ -10,8 +10,9 @@
         {% csrf_token %}
 
         {{ form }}
-        <button type="submit" class="btn btn-main">
-            Atualizar
+        <h1>Tem certeza que deseja deletar: {{ funcionario.nome }}</h1>
+        <button type="submit" class="btn btn-danger">
+            Confirmar
         </button>
     </form>
 {% endblock %}
